@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusableCell" id="gTV-IL-0wX" customClass="MoviesCollectionViewCell" customModule="DesafioPopcode" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="221" height="329"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="221" height="329"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czg-qo-Pks">
+                        <rect key="frame" x="5" y="10" width="211" height="314"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7YN-bE-HBm">
+                                <rect key="frame" x="0.0" y="0.0" width="211" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="s9K-Ix-vDn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-TO-uod">
+                                <rect key="frame" x="185" y="269" width="18" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="XVR-A8-Xvy"/>
+                                    <constraint firstAttribute="height" constant="37" id="eWh-kc-bzI"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="fGC-0D-FTw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="flS-HC-N7d"/>
+                                </constraints>
+                                <state key="normal" image="favorite_gray_icon"/>
+                                <connections>
+                                    <action selector="favoriteButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="4b7-50-LjQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="MZb-v8-Ztt">
+                                <rect key="frame" x="35" y="261" width="120" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="JFV-em-1Mg"/>
+                                    <constraint firstAttribute="width" constant="120" id="dSC-AK-FPx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="fxc-IC-hRI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="AmareloMovs"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="BlackMovs"/>
+                        <constraints>
+                            <constraint firstItem="MZb-v8-Ztt" firstAttribute="leading" secondItem="czg-qo-Pks" secondAttribute="leading" constant="35" id="5WB-gZ-xgA"/>
+                            <constraint firstAttribute="bottom" secondItem="MZb-v8-Ztt" secondAttribute="bottom" constant="8" id="Rqb-Be-7op"/>
+                            <constraint firstItem="7YN-bE-HBm" firstAttribute="leading" secondItem="czg-qo-Pks" secondAttribute="leading" id="VwH-80-tGG"/>
+                            <constraint firstAttribute="trailing" secondItem="7YN-bE-HBm" secondAttribute="trailing" id="aGT-AE-f9x"/>
+                            <constraint firstAttribute="bottom" secondItem="xCb-TO-uod" secondAttribute="bottom" constant="8" id="we3-Ql-C2y"/>
+                            <constraint firstAttribute="trailing" secondItem="xCb-TO-uod" secondAttribute="trailing" constant="8" id="x3Z-tC-0gm"/>
+                            <constraint firstItem="7YN-bE-HBm" firstAttribute="top" secondItem="czg-qo-Pks" secondAttribute="top" id="xHH-4P-BpK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="czg-qo-Pks" secondAttribute="bottom" constant="5" id="8DI-re-Ssv"/>
+                <constraint firstItem="czg-qo-Pks" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="BxD-J8-fop"/>
+                <constraint firstAttribute="trailing" secondItem="czg-qo-Pks" secondAttribute="trailing" constant="5" id="U5L-fM-g5X"/>
+                <constraint firstItem="czg-qo-Pks" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="dHH-AQ-C0b"/>
+            </constraints>
+            <size key="customSize" width="221" height="329"/>
+            <connections>
+                <outlet property="favoriteButton" destination="xCb-TO-uod" id="IuT-WI-UCS"/>
+                <outlet property="imageViewMovie" destination="7YN-bE-HBm" id="orh-L3-hjr"/>
+                <outlet property="labelMovieTitle" destination="MZb-v8-Ztt" id="QSE-Q4-vGW"/>
+            </connections>
+            <point key="canvasLocation" x="264.49275362318843" y="197.20982142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="favorite_gray_icon" width="17" height="16"/>
+        <namedColor name="AmareloMovs">
+            <color red="0.96700000762939453" green="0.80800002813339233" blue="0.35899999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlackMovs">
+            <color red="0.17599999904632568" green="0.18700000643730164" blue="0.27700001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
