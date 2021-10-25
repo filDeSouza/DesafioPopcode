@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 protocol FavoriteMoviesDisplayLogic {
     func displayFavoriteMovies(viewModel: FavoriteMovies.Acao.ViewModel)
@@ -20,7 +22,8 @@ class FavoriteMoviesViewController: UIViewController, FavoriteMoviesDisplayLogic
     var interactor: FavoriteMoviesBusinessLogic?
     var router: (NSObjectProtocol & FavoriteMoviesDataPassing & FavoriteMoviesRoutingLogic)?
     var utils = Utils()
-    
+    let db = Firestore.firestore()
+
     required init?(coder aDecoder: NSCoder)
     {
       super.init(coder: aDecoder)
@@ -98,6 +101,25 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor?.displayMovieDetail(movie: favoriteMovies[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {return}
+            
+            db.collection(Constants.FStore.collectionName).document(deviceID).collection("favoritos").document("\(favoriteMovies[indexPath.row].id)").delete(){ err in
+                
+                if let err = err{
+                    print("Erro ao remover o documento: \(err)")
+                }else{
+                    self.favoriteMovies.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    print("Documento removido com sucesso")
+                    
+                }
+            }
+        }
     }
     
 }
