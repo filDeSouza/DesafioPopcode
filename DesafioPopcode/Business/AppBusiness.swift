@@ -28,6 +28,23 @@ class AppBusiness {
         
     }
     
+    func getGenres(completion: @escaping(GenreModel?) -> Void){
+        
+        provider.getGenres(completion: {(result) in
+            
+            if result != nil{
+                do{
+                    let genres = result
+                    completion(genres)
+                }
+            }else{
+                return
+            }
+            
+        })
+        
+    }
+    
     func getSearchMovies(pagina: Int, movie: String, completion: @escaping([MoviesModel]?) -> Void){
         
         provider.getSearchMovies(pagina: pagina, movie: movie, completion: {(result) in

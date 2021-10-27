@@ -79,7 +79,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
             
             db.collection(Constants.FStore.collectionName).document(deviceID).collection("favoritos").document("\(movieFB.id)").setData([
                 Constants.FStore.movieID: movieFB.id,
-                Constants.FStore.original_title: movieFB.original_title,
+                Constants.FStore.original_title: movieFB.title,
                 Constants.FStore.genre_ids: movieFB.genre_ids,
                 Constants.FStore.overview: movieFB.overview ?? "",
                 Constants.FStore.poster_path: movieFB.poster_path ?? "",

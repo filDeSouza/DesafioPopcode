@@ -19,4 +19,16 @@ enum Detail{
             var movie: MoviesModel
         }
     }
+    
+    enum GetGenres {
+        struct Request {
+            
+        }
+        struct Response {
+            var genres: GenreModel
+        }
+        struct ViewModel {
+            var genres: GenreModel
+        }
+    }
 }

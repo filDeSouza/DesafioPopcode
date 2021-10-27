@@ -9,6 +9,7 @@ import UIKit
 
 protocol PopularMoviesProviderProtocol {
     func obterPopularMovies(pagina: Int, completion: @escaping([MoviesModel]?) -> Void)
+    func getGenres(completion: @escaping(GenreModel?) -> Void)
     func getSearchMovies(pagina: Int, movie: String, completion: @escaping([MoviesModel]?) -> Void)
     func getFavoriteMovies(completion: @escaping([MoviesModel]?) -> Void)
 }

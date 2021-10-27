@@ -32,7 +32,7 @@ class FirebaseService{
                             let data = doc.data()
                             if let movieID = data[Constants.FStore.movieID] as? Int, let movieTitle =  data[Constants.FStore.original_title] as? String, let movieGenre = data[Constants.FStore.genre_ids] as? [Int], let movieOverview = data[Constants.FStore.overview] as? String, let moviePoster = data[Constants.FStore.poster_path] as? String, let movieRelease = data[Constants.FStore.release_date] as? String{
                                 
-                                let newMovie = MoviesModel(genre_ids: movieGenre, id: movieID, original_title: movieTitle, overview: movieOverview, poster_path: moviePoster, release_date: movieRelease)
+                                let newMovie = MoviesModel(genre_ids: movieGenre, id: movieID, title: movieTitle, overview: movieOverview, poster_path: moviePoster, release_date: movieRelease)
                                 self.movies.append(newMovie)
                             }
                             

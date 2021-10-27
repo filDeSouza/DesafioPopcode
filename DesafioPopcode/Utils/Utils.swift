@@ -10,7 +10,7 @@ import UIKit
 class Utils {
     
     func popularCelulaPopularMovies(_ popularMovies: [MoviesModel],_ cell: MoviesCollectionViewCell, _ indexPath: IndexPath){
-        cell.labelMovieTitle.text = popularMovies[indexPath.row].original_title
+        cell.labelMovieTitle.text = popularMovies[indexPath.row].title
         
         if let poster = popularMovies[indexPath.row].poster_path{
             guard let url = URL(string: Constants.url_images + poster) else {return}
@@ -44,7 +44,7 @@ class Utils {
     }
     
     func popularCelulaFavoriteMovies(_ favoriteMovies: [MoviesModel],_ cell: MoviesTableViewCell, _ indexPath: IndexPath){
-        cell.labelMovieTitle.text = favoriteMovies[indexPath.row].original_title
+        cell.labelMovieTitle.text = favoriteMovies[indexPath.row].title
         
         cell.labelMovieDescription.text = favoriteMovies[indexPath.row].overview
         
@@ -133,6 +133,10 @@ class Utils {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> Array<Any>{
+        let listGenres = arrayGenresAPI.genres.contains(where: arrayGenresMovie.genre_ids)
+    }
+    
 }
 
 extension UIButton {
@@ -142,5 +146,11 @@ extension UIButton {
         }
 
         return buttonImage.pngData() == namedImage.pngData()
+    }
+}
+
+public extension Sequence where Element : Hashable {
+    func contains(_ elements: [Element]) -> Bool {
+        return Set(elements).isSubset(of:Set(self))
     }
 }

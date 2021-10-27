@@ -53,4 +53,19 @@ class AppManager {
         
     }
     
+    func getGenres(completion: @escaping(GenreModel?) -> Void){
+        
+        appBusiness.getGenres(completion: { (result) in
+            
+            if result != nil{
+                completion(result)
+            }else{
+                return
+            }
+            
+        })
+        
+    }
+    
+    
 }

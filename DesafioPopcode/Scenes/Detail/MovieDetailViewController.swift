@@ -11,6 +11,7 @@ import ProgressHUD
 
 protocol MovieDetailDisplayLogic {
     func displayMovieDetail(movie: Detail.GetMovie.ViewModel)
+    func displayGenres(genres: Detail.GetGenres.ViewModel)
 }
 
 class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
@@ -23,6 +24,7 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
     @IBOutlet weak var labelDerscription: UILabel!
     
     var movie: MoviesModel?
+    var genresModel: GenreModel?
     let utils = Utils()
     let db = Firestore.firestore()
     var interactor: MovieDetailBusinessLogic?
@@ -37,8 +39,11 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupDetailMovie()
-        
+        setupGenres()
+    }
+    
+    func setupGenres(){
+        interactor?.getGenres(request: Detail.GetGenres.Request())
     }
     
     func setupDetailMovie() {
@@ -60,6 +65,11 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
         
     }
     
+    func displayGenres(genres: Detail.GetGenres.ViewModel) {
+        genresModel = genres.genres
+        setupDetailMovie()
+    }
+    
     func displayMovieDetail(movie: Detail.GetMovie.ViewModel) {
         
         DispatchQueue.main.async {
@@ -70,7 +80,7 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
             if let poster = movie.movie.poster_path{
                 self.utils.getImage(url: Constants.url_images + poster, imageView: self.imagePoster)
             }
-            self.labelTitle.text = movie.movie.original_title
+            self.labelTitle.text = movie.movie.title
             if let date = movie.movie.release_date{
                 self.labelYear.text = self.utils.formatacaoData(data: date)
             }
@@ -118,7 +128,7 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
             
             db.collection(Constants.FStore.collectionName).document(deviceID).collection("favoritos").document("\(movieFB.id)").setData([
                 Constants.FStore.movieID: movieFB.id,
-                Constants.FStore.original_title: movieFB.original_title,
+                Constants.FStore.original_title: movieFB.title,
                 Constants.FStore.genre_ids: movieFB.genre_ids,
                 Constants.FStore.overview: movieFB.overview ?? "",
                 Constants.FStore.poster_path: movieFB.poster_path ?? "",
