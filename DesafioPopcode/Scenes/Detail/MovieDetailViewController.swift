@@ -74,8 +74,6 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
         
         DispatchQueue.main.async {
             
-            
-            
             self.movie = movie.movie
             guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {return}
             

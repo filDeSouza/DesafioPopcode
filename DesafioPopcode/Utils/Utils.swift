@@ -133,12 +133,24 @@ class Utils {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
-    func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> Array<Any>{
-        let listGenres = arrayGenresAPI.genres.map{_ in arrayGenresMovie.genre_ids}
-        print("Lista de generos encontrados: \(listGenres)")
+    func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> [Genre]{
+        var listGenres: [Genre] = []
+        var index1 = 0
+        var index2 = 0
+        for genresMovie in arrayGenresMovie.genre_ids {
+            for genresAPI in arrayGenresAPI.genres {
+                if index2 < arrayGenresAPI.genres.count {
+                    if arrayGenresMovie.genre_ids[index1] == arrayGenresAPI.genres[index2].id {
+                        listGenres.append(genresAPI)
+                    }
+                    index2 += 1
+                }
+            }
+            index2 = 0
+            index1 += 1
+        }
         return listGenres
     }
-    
 }
 
 extension UIButton {
