@@ -134,7 +134,9 @@ class Utils {
     }
     
     func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> Array<Any>{
-        let listGenres = arrayGenresAPI.genres.contains(where: arrayGenresMovie.genre_ids)
+        let listGenres = arrayGenresAPI.genres.map{_ in arrayGenresMovie.genre_ids}
+        print("Lista de generos encontrados: \(listGenres)")
+        return listGenres
     }
     
 }
