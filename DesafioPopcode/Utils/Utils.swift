@@ -133,15 +133,15 @@ class Utils {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
-    func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> [Genre]{
-        var listGenres: [Genre] = []
+    func compareGenreArrays(arrayGenresAPI: GenreModel, arrayGenresMovie: MoviesModel) -> String{
+        var listGenres: [String] = []
         var index1 = 0
         var index2 = 0
         for genresMovie in arrayGenresMovie.genre_ids {
             for genresAPI in arrayGenresAPI.genres {
                 if index2 < arrayGenresAPI.genres.count {
                     if arrayGenresMovie.genre_ids[index1] == arrayGenresAPI.genres[index2].id {
-                        listGenres.append(genresAPI)
+                        listGenres.append(genresAPI.name)
                     }
                     index2 += 1
                 }
@@ -149,7 +149,8 @@ class Utils {
             index2 = 0
             index1 += 1
         }
-        return listGenres
+        let stringsReduzidas = listGenres.joined(separator: ", ")
+        return stringsReduzidas
     }
 }
 

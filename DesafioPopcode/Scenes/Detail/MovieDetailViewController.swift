@@ -79,8 +79,10 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic{
             
             guard let genresModelLet = self.genresModel else {return}
             guard let genresMovie = self.movie else {return}
+                        
+            let genres = self.utils.compareGenreArrays(arrayGenresAPI: genresModelLet, arrayGenresMovie: genresMovie)
             
-            self.utils.compareGenreArrays(arrayGenresAPI: genresModelLet, arrayGenresMovie: genresMovie)
+            self.labelGenre.text = genres
             
             if let poster = movie.movie.poster_path{
                 self.utils.getImage(url: Constants.url_images + poster, imageView: self.imagePoster)
